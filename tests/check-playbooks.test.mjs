@@ -106,7 +106,7 @@ describe("project playbooks", () => {
     const example = "    " + change("indented code example") + "\n~~~~markdown\n" + change("example only") + "~~~\n" + change("still an example") + "~~~~\n";
     expect(run({ "sample.md": front + example + change("Binary-search the cause") }).code).toBe(0);
     expect(run({ "sample.md": front + change("Focused-fix exception") }).code).toBe(1);
-    expect(run({ "sample.md": front + change("failing test first and the fix on top") }).code).toBe(0);
+    expect(run({ "sample.md": "---\nextends: feature\nwhen: Build it.\n---\n" + change("committing each small unit before the next") }).code).toBe(0);
   });
 
   test("a base without numbered steps anchors changes on one paragraph or list item, never a heading", () => {

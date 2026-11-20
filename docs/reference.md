@@ -1,10 +1,10 @@
 # pstack reference
 
-Start with the [README](../README.md) for installation and your first task.
+Start with the [README](https://github.com/michael-denyer/pstack-claude/blob/main/README.md) for installation and your first task.
 
 ## Slash commands
 
-The package includes 67 skill directories: 43 public skills and 24 `principle-*` references. Claude Code uses `/pstack:<name>`, Pi uses `/skill:<name>`, and Muse lists each user-invocable skill as `/<name>`. In Codex, mention a skill with `$<name>`, such as `$poteto-mode`, or pick one from `/skills`.
+The package includes 66 skill directories: 42 public skills and 24 `principle-*` references. Claude Code uses `/pstack:<name>`, Pi uses `/skill:<name>`, and Muse lists each user-invocable skill as `/<name>`. In Codex, mention a skill with `$<name>`, such as `$poteto-mode`, or pick one from `/skills`.
 
 Find each skill's instructions in the [skills tree](../plugins/pstack/skills/).
 
@@ -19,7 +19,6 @@ Find each skill's instructions in the [skills tree](../plugins/pstack/skills/).
 | `/automate-me` | draft your own personal -mode skill from recent transcripts |
 | `/reflect` | capture a long task's lessons as a skill edit |
 | `/correct` | find the mistakes agents keep repeating in a repo and make each one impossible, enforced at the highest level that works |
-| `/tdd` | fix a bug by writing the failing test first, then the fix |
 | `/benchmark-checklist` | vet a measured speedup or regression (limiter, tuning, errors, repeat runs, end-to-end relevance) before you report or act on it |
 | `/typescript-best-practices` | ground type-system discipline in TypeScript syntax |
 | `/teach` | explain a subsystem plainly by composing how + why |
@@ -65,9 +64,9 @@ All runtimes share [one skills tree](../plugins/pstack/skills/). A skills-only i
 | Pi | Install the repository as a Pi package with `pi install` (Pi 1.5.1 or later). The [Pi extension](../plugins/pstack/pi/index.ts) registers the subagent, question, and wake-up tools and `/loop`, and the [Pi mapping](../plugins/pstack/skills/poteto-mode/references/pi-tools.md) translates Claude tools and model names. The [equivalence table](pi-equivalence.md) records each Claude Code mechanism and how it was verified on Pi 1.5.1. |
 | GitHub Copilot | Install the plugin through the repository's marketplace; the CLI and the GitHub Copilot app share it. The [Copilot mapping](../plugins/pstack/skills/poteto-mode/references/copilot-tools.md) translates Claude tools, paths, and model roles, and maps app-only tools to CLI fallbacks. Install, routing, agent dispatch, and first-run setup are smoke-tested on the CLI; see [GitHub Copilot](#github-copilot). |
 | Muse | Install the native plugin bundle with `muse plugins install`, then approve its hooks and agent definitions with `muse plugins approve pstack`. The [Muse mapping](../plugins/pstack/skills/poteto-mode/references/muse-tools.md) translates Claude tools, subagents, transcripts, and model roles. See [Muse](#muse). |
-| OMP | Install through the marketplace as described in the [README](../README.md#install). The [OMP mapping](../plugins/pstack/skills/poteto-mode/references/omp-tools.md) covers tools and model roles. On OMP 18.16.0, installation from a local marketplace, skill access, and the routing toggle were verified with a synthetic provider; model compliance has not been tested. |
-| Kimi Code CLI | Install the native plugin from a release containing its manifest, or test a clean local copy as described in the [README](../README.md#install). The [Kimi mapping](../plugins/pstack/skills/poteto-mode/references/kimi-tools.md) covers tool and model differences. On Kimi Code CLI 2.4.1 for macOS, installation and delivery of routing and skill content to a synthetic provider were verified; model compliance has not been tested. |
-| Grok Build | Install the native plugin from a local checkout as described in the [README](../README.md#install). The [Grok mapping](../plugins/pstack/skills/poteto-mode/references/grok.md) covers tool and model differences. On Grok Build 1.0.70 for macOS, `tests/grok-smoke.py` checked that a synthetic provider received the routing skill description and explicit skill content. |
+| OMP | Install through the marketplace as described in the [README](https://github.com/michael-denyer/pstack-claude/blob/main/README.md#install). The [OMP mapping](../plugins/pstack/skills/poteto-mode/references/omp-tools.md) covers tools and model roles. On OMP 18.16.0, installation from a local marketplace, skill access, and the routing toggle were verified with a synthetic provider; model compliance has not been tested. |
+| Kimi Code CLI | Install the native plugin from a release containing its manifest, or test a clean local copy as described in the [README](https://github.com/michael-denyer/pstack-claude/blob/main/README.md#install). The [Kimi mapping](../plugins/pstack/skills/poteto-mode/references/kimi-tools.md) covers tool and model differences. On Kimi Code CLI 2.4.1 for macOS, installation and delivery of routing and skill content to a synthetic provider were verified; model compliance has not been tested. |
+| Grok Build | Install the native plugin from a local checkout as described in the [README](https://github.com/michael-denyer/pstack-claude/blob/main/README.md#install). The [Grok mapping](../plugins/pstack/skills/poteto-mode/references/grok.md) covers tool and model differences. On Grok Build 1.0.70 for macOS, `tests/grok-smoke.py` checked that a synthetic provider received the routing skill description and explicit skill content. |
 | MiniMax Code | Copy `plugins/pstack` into `${MINIMAX_DATA_DIR:-~/.minimax}/plugins/`, where MiniMax Code loads it as the local plugin `pstack@local` through its Claude Code reader, skills, agents, and routing hook included. The [MiniMax Code mapping](../plugins/pstack/skills/poteto-mode/references/minimax-tools.md) translates Claude tools, subagents, and model roles. On 0.7.4, synthetic-provider guest sessions delivered routing and the explicit `pstack:poteto-mode` skill when enabled, and disabled controls omitted them. Agent dispatch and real-model compliance remain unverified. Plugin loading is also checked by `tests/minimax-smoke.sh`. |
 | Antigravity (`agy`) | Install `plugins/pstack` with `agy plugin install ./plugins/pstack`. Antigravity reads [`.antigravity-plugin/plugin.json`](../plugins/pstack/.antigravity-plugin/plugin.json) and the root [`hooks.json`](../plugins/pstack/hooks.json). The [Antigravity mapping](../plugins/pstack/skills/poteto-mode/references/agy-tools.md) translates Claude tools, subagents, transcripts, and model roles. On macOS, a signed-in `agy` 1.5.0 session received the routing instruction and read the full `poteto-mode` skill. A separate session dispatched `poteto-agent` and received its reply. The hook uses `sh`; Windows is untested. |
 | Prime Agent | Its documentation describes shared-directory discovery; it has not been tested in a live session. Choose tools and models through Prime's configuration. |
@@ -92,7 +91,7 @@ Skills-only installs and other runtimes do not include these integrations. Reque
 
 ### Shared skills installation
 
-Use this path for Prime Agent, Gemini CLI, or a skills-only Codex installation. Run the script under [Other harnesses](../README.md#other-harnesses) in the README, which clones the repository and links its skills into `~/.agents/skills/`.
+Use this path for Prime Agent, Gemini CLI, or a skills-only Codex installation. Run the script under [Other harnesses](https://github.com/michael-denyer/pstack-claude/blob/main/README.md#other-harnesses) in the README, which clones the repository and links its skills into `~/.agents/skills/`.
 
 Keep all skill directories, including the principle references. Leave the clone at this path while the links are installed.
 
@@ -116,7 +115,7 @@ The [CI installation check](../.github/workflows/ci.yml) uses the skills CLI to 
 
 The [native plugin manifest](../plugins/pstack/.codex-plugin/plugin.json) points to the shared skills directory and the Codex [SessionStart hook](../plugins/pstack/hooks/codex-hooks.json). The [marketplace catalog](../.agents/plugins/marketplace.json) lists `pstack` in the `pstack-claude` marketplace. Review and trust the hook, listed as `Loading pstack routing`, through `/hooks`; Codex asks again when its definition changes.
 
-The [README installation](../README.md#codex) registers that catalog with `codex plugin marketplace add`, then installs the plugin with `codex plugin add`. These commands match the help output from `codex-cli 0.154.0-alpha.6.2`. A fresh native installation was not tested for this documentation change.
+The [README installation](https://github.com/michael-denyer/pstack-claude/blob/main/README.md#codex) registers that catalog with `codex plugin marketplace add`, then installs the plugin with `codex plugin add`. These commands match the help output from `codex-cli 0.154.0-alpha.6.2`. A fresh native installation was not tested for this documentation change.
 
 OpenAI documents [marketplace registration and the plugin format](https://developers.openai.com/plugins/build/plugins#add-a-marketplace-from-the-cli). If your CLI lacks `plugin add`, use the plugin browser after registering the marketplace, or use the [skills-only installation](#shared-skills-installation).
 
@@ -159,7 +158,7 @@ Copilot lists only part of a large plugin's skills in its prompt, so some pstack
 
 The Muse build is a native Muse plugin bundle rooted at `plugins/pstack/`. Its [manifest](../plugins/pstack/.muse-plugin/plugin.json) lists every shared skill as a skill capability and two inline `SessionStart` hooks, one running the shell hook script and one running the PowerShell hook script, each with the `muse` argument. The generator owns the manifest's skill list and hooks, so the list always matches the tree and the hooks always run the argvs in `MUSE_HOOKS` in `tools/runtimes.mjs`. Muse rejects a command whose id duplicates a skill id, so the build ships no command templates: Muse lists each user-invocable skill as `/<name>` itself, and plugin skills load with `read_skill` as `plugin:pstack:<name>`.
 
-Install from a clone as the [README](../README.md) shows, then approve the plugin. Muse runs third-party hooks and agent definitions only after `muse plugins approve pstack`; until then the skills work on request and nothing routes automatically. Once approved, the hook prints the [Muse routing instruction](../plugins/pstack/hooks/session-start-muse.md) as plain additional context, plus the saved role lines from `${XDG_CONFIG_HOME:-~/.config}/muse/pstack-models.md` when the sheet has any. Only known role lines whose entries are model IDs or aliases reach the context, rebuilt from their checked values. `session hook: off` in the sheet disables the injection, as on the other runtimes.
+Install from a clone as the [README](https://github.com/michael-denyer/pstack-claude/blob/main/README.md) shows, then approve the plugin. Muse runs third-party hooks and agent definitions only after `muse plugins approve pstack`; until then the skills work on request and nothing routes automatically. Once approved, the hook prints the [Muse routing instruction](../plugins/pstack/hooks/session-start-muse.md) as plain additional context, plus the saved role lines from `${XDG_CONFIG_HOME:-~/.config}/muse/pstack-models.md` when the sheet has any. Only known role lines whose entries are model IDs or aliases reach the context, rebuilt from their checked values. `session hook: off` in the sheet disables the injection, as on the other runtimes.
 
 Muse caps its skill catalog at 32 KB, so with pstack's 65 skills installed it compacts descriptions to fit; no skill id is dropped, and every skill still loads by name. The plugin's four `agents/` files register as Muse agent definitions under scoped ids such as `pstack/poteto-agent`, so poteto-mode's dispatches resolve as written, through the Muse mapping. A role's effort suffix passes as a Workflow child's `effort`, the Muse form of the dispatch effort field every runtime now uses. The Muse block of `models.json` gives a Muse model per tier; `subagent_spawn` takes a definition rather than a model, so per-role models apply where the dispatch takes one (a Workflow child's `model`), and the mapping says so. The `typescript-best-practices` skill's `paths` frontmatter is metadata on Muse, so `muse skills validate` reports it as an unsupported-field warning while the skill stays valid.
 
@@ -244,4 +243,4 @@ Cursor-specific automations, sticky-mode metadata, the Grok Bot UI workflow, and
 
 For skill changes, follow the [sync boundary](../CONTRIBUTING.md#the-sync-boundary). Runtime adaptations and workflow changes both land here, and a workflow change is declared as a fork.
 
-See the [license summary](../README.md#license) for licenses and full-plugin attribution. [NOTICE-skills.md](../NOTICE-skills.md) is the notice for skills-only installations.
+See the [license notice](../NOTICE.md) for licenses and full-plugin attribution. [NOTICE-skills.md](../NOTICE-skills.md) is the notice for skills-only installations.

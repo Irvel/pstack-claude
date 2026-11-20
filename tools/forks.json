@@ -38,8 +38,14 @@
     },
     "plugins/pstack/skills/poteto-help/SKILL.md": {
       "kind": "port-feature",
-      "why": "Routes installation, model-sheet loading, and persistent routing preferences to the current runtime's setup sources, gives installed playbooks precedence over upstream guides, and keeps the port's public skill loading, hidden principles, verification-skill naming, local-worker advice, driver and built-in equivalents, excluded make-bot-ui row, and orchestrate wording as prose changes in this fork, and routes \"stack them, don't ship\" to Autopilot-stack, because neither autopilot merges.",
+      "why": "Routes installation, model-sheet loading, and persistent routing preferences to the current runtime's setup sources, gives installed playbooks precedence over upstream guides, and keeps the port's public skill loading, hidden principles, verification-skill naming, local-worker advice, driver and built-in equivalents, excluded make-bot-ui and tdd rows, and orchestrate wording as prose changes in this fork, and routes \"stack them, don't ship\" to Autopilot-stack, because neither autopilot merges.",
       "since": "0.9.71",
+      "upstream": "not-proposed"
+    },
+    "plugins/pstack/skills/poteto-help/references/recipes.md": {
+      "kind": "policy",
+      "why": "Drops the recipe that sent a bug with a cheap test path to the removed tdd skill.",
+      "since": "0.9.144",
       "upstream": "not-proposed"
     },
     "plugins/pstack/skills/poteto-mode/SKILL.md": {
@@ -68,7 +74,7 @@
     },
     "plugins/pstack/skills/poteto-mode/playbooks/bug-fix.md": {
       "kind": "policy",
-      "why": "Quotes decisive failing and passing output trimmed to the assertion and counts, separates verified code, publication, observed runtime behavior, and blockers, selects non-sensitive diagnostic fields before printing, and adds a focused-fix exception with explicit architecture and independent correctness review triggers for higher-risk fixes.",
+      "why": "Quotes decisive failing and passing output trimmed to the assertion and counts, separates verified code, publication, observed runtime behavior, and blockers, selects non-sensitive diagnostic fields before printing, and adds a focused-fix exception with explicit architecture and independent correctness review triggers for higher-risk fixes. It drops upstream's step that staged a failing test or repro commit before the fix and pointed at the removed tdd skill, so the steps run reproduce, find the cause, plan, verify, open a PR.",
       "since": "0.9.10",
       "upstream": "not-proposed"
     },
@@ -194,8 +200,14 @@
     },
     "plugins/pstack/skills/principle-prove-it-works/SKILL.md": {
       "kind": "policy",
-      "why": "Adds checks that the process behind a result was sound, that a failing check fails for the predicted reason, and that a success report rests on the real state and exit code rather than truncated output.",
+      "why": "Adds checks that the process behind a result was sound, that a failing check fails for the predicted reason, and that a success report rests on the real state and exit code rather than truncated output, without upstream's red-test wording.",
       "since": "0.1.0",
+      "upstream": "not-proposed"
+    },
+    "plugins/pstack/skills/principle-sequence-verifiable-units/SKILL.md": {
+      "kind": "policy",
+      "why": "Drops the failing-test-first, fix-on-top delivery order, keeping the subtraction before the reshape and the baseline before the treatment, because the port carries no test-first workflow.",
+      "since": "0.9.144",
       "upstream": "not-proposed"
     },
     "plugins/pstack/skills/principle-test-behavior-not-implementation/SKILL.md": {
@@ -322,12 +334,6 @@
       "kind": "policy",
       "why": "Adds a test that TLC's output with Windows line ends reads as it does with Unix ones.",
       "since": "0.9.116",
-      "upstream": "not-proposed"
-    },
-    "plugins/pstack/skills/tdd/SKILL.md": {
-      "kind": "policy",
-      "why": "Requires quoting the failure content, not the assertion line, as evidence that the new test fails for the intended reason.",
-      "since": "0.9.21",
       "upstream": "not-proposed"
     }
   },

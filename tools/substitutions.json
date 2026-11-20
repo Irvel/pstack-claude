@@ -596,6 +596,22 @@
     {
       "token": "restart Cursor",
       "hint": "Cursor is the host application upstream; say restart Claude Code, or add a substitution rule for the phrase"
+    },
+    {
+      "regex": "\\b[Tt][Dd][Dd]\\b",
+      "hint": "The port removed the tdd skill and every test-first step; rewrite the sentence without it"
+    },
+    {
+      "regex": "[Tt]est-first|[Ff]ailing[- ]test[- ]first",
+      "hint": "The port removed the tdd skill and every test-first step; rewrite the sentence without it"
+    },
+    {
+      "regex": "[Ff]ailing[- ](?:test|repro)[^.]*before the fix",
+      "hint": "The port removed the tdd skill and every test-first step; rewrite the sentence without it"
+    },
+    {
+      "regex": "[Ff]ailing-before|[Rr]ed[-/ ]green",
+      "hint": "The port removed the tdd skill and every test-first step; rewrite the sentence without it"
     }
   ]
 }
