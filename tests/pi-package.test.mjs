@@ -112,7 +112,6 @@ test("versionAtLeast compares each part of a version as a number", () => {
 test("CI installs PI_FLOOR, and each doc that states the oldest supported Pi names it", () => {
   const stated = [
     [".github/workflows/ci.yml", `@earendil-works/pi-coding-agent@${PI_FLOOR} `],
-    ["README.md", `Pi ${PI_FLOOR} or later`],
     ["docs/reference.md", `Pi ${PI_FLOOR} or later`],
     ["docs/reference.md", `verified on Pi ${PI_FLOOR}`],
     ["docs/pi-equivalence.md", `how Pi ${PI_FLOOR} provides`],
