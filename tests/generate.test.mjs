@@ -709,7 +709,7 @@ describe("plan, changes, apply", () => {
   const generate = (root, ...args) =>
     spawnSync(process.execPath, [join(root, "tools/generate.mjs"), ...args], { encoding: "utf8" });
   const append = (root, rel, text) => writeFileSync(join(root, rel), readFileSync(join(root, rel), "utf8") + text);
-  const STRAY_SLUG = ["plugins/pstack/skills/tdd/SKILL.md", "\nUse claude-opus-99 here.\n"];
+  const STRAY_SLUG = ["plugins/pstack/skills/benchmark-checklist/SKILL.md", "\nUse claude-opus-99 here.\n"];
 
   test("plan restores every lead line removed by hand", () => {
     const root = repoCopy();
@@ -778,13 +778,13 @@ describe("plan, changes, apply", () => {
 
   test("problems reports a lead line in a file that does not own it", () => {
     const root = repoCopy();
-    append(root, "plugins/pstack/skills/tdd/SKILL.md", `\n${codex.preamble}\n`);
+    append(root, "plugins/pstack/skills/benchmark-checklist/SKILL.md", `\n${codex.preamble}\n`);
     const codexTools = "plugins/pstack/skills/poteto-mode/references/codex-tools.md";
     writeFileSync(join(root, codexTools), readFileSync(join(root, codexTools), "utf8").replace(/^\| `why` \|.*\n/m, ""));
     const failures = problems(root).filter((f) => f.startsWith("generator-owned lead lines"));
     expect(failures).toHaveLength(1);
     expect(failures[0]).toContain("\nplugins/pstack/skills/why/SKILL.md:");
-    expect(failures[0]).toContain("\nplugins/pstack/skills/tdd/SKILL.md:");
+    expect(failures[0]).toContain("\nplugins/pstack/skills/benchmark-checklist/SKILL.md:");
   });
 
   test("problems reports every broken contract, and --check prints each and exits 1", () => {
@@ -794,7 +794,7 @@ describe("plan, changes, apply", () => {
     append(root, "plugins/pstack/skills/unslop/SKILL.md", '\nsubagent_type: "poteto-agent"\n');
     const failures = problems(root);
     expect(failures).toEqual([
-      expect.stringContaining("plugins/pstack/skills/tdd/SKILL.md:"),
+      expect.stringContaining("plugins/pstack/skills/benchmark-checklist/SKILL.md:"),
       "invalid local markdown links:\ndeslop/SKILL.md -> missing.md (missing)",
       expect.stringContaining("skills/unslop/SKILL.md:"),
     ]);
@@ -806,12 +806,12 @@ describe("plan, changes, apply", () => {
   test("a public skill without a slash-command row fails both runs, and the write run writes nothing", () => {
     const root = repoCopy();
     const reference = join(root, "docs/reference.md");
-    writeFileSync(reference, readFileSync(reference, "utf8").replace(/^\| `\/tdd` \|.*\n/m, ""));
+    writeFileSync(reference, readFileSync(reference, "utf8").replace(/^\| `\/benchmark-checklist` \|.*\n/m, ""));
     writeFileSync(join(root, PLANNED), "stale\n");
     for (const args of [["--check"], []]) {
       const run = generate(root, ...args);
       expect(run.status).toBe(1);
-      expect(run.stderr).toContain("slash-command table is out of sync with the public skills; skill without a row: tdd");
+      expect(run.stderr).toContain("slash-command table is out of sync with the public skills; skill without a row: benchmark-checklist");
     }
     expect(readFileSync(join(root, PLANNED), "utf8")).toBe("stale\n");
   });
@@ -869,7 +869,7 @@ describe("plan, changes, apply", () => {
       writeFileSync(join(root, manifest), text);
       expect(problems(root)).toEqual([
         expect.stringContaining(`${manifest}: `),
-        expect.stringContaining("plugins/pstack/skills/tdd/SKILL.md:"),
+        expect.stringContaining("plugins/pstack/skills/benchmark-checklist/SKILL.md:"),
       ]);
     }
   });

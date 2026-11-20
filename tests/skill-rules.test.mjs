@@ -107,14 +107,14 @@ const rules = [
     phrase: "Verify the process as well as the outcome.",
   },
   {
-    source: "#59 item 3 red is a colour",
+    source: "#59 item 3 a failing check proves the instrument",
     file: "principle-prove-it-works/SKILL.md",
-    phrase: "Red is a colour, not a measurement.",
+    phrase: "A failing check proves the instrument only when the failure content is the disagreement you predicted.",
   },
   {
     source: "#59 item 3 quote the failure content",
-    file: "tdd/SKILL.md",
-    phrase: "Quote the failure content",
+    file: "principle-prove-it-works/SKILL.md",
+    phrase: "Quote the assertion's diff",
   },
   {
     source: "#59 item 4 search the places the rules name",

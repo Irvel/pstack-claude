@@ -9,7 +9,7 @@ Load the `pstack:poteto-mode` skill with the `skill` tool and follow its instruc
 
 It routes to the right pstack skill from there. For smaller tasks, such as a contained change to one file with an obvious test, a question, or a one-line edit, work directly and verify on the real artifact.
 
-When the intent is already specific, enter that skill directly: `pstack:tdd`, `pstack:architect`, `pstack:how`, `pstack:why`, `pstack:arena`, `pstack:interrogate`.
+When the intent is already specific, enter that skill directly: `pstack:architect`, `pstack:how`, `pstack:why`, `pstack:arena`, `pstack:interrogate`.
 
 Resolve every Claude tool, model, and built-in skill a pstack skill names through the MiniMax Code mapping in the `poteto-mode` skill directory, `references/minimax-tools.md`.
 

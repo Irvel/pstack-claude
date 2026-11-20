@@ -9,7 +9,7 @@ Read the `poteto-mode` skill's `SKILL.md` in full with `read_file` and follow it
 
 It routes to the right pstack skill from there. For smaller tasks, such as a contained change to one file with an obvious test, a question, or a one-line edit, work directly and verify on the real artifact.
 
-When the intent is already specific, enter that skill directly: `tdd`, `architect`, `how`, `why`, `arena`, `interrogate`.
+When the intent is already specific, enter that skill directly: `architect`, `how`, `why`, `arena`, `interrogate`.
 
 Resolve every Claude tool, model, and built-in skill a pstack skill names through the Antigravity mapping in the `poteto-mode` skill directory, `references/agy-tools.md`.
 
